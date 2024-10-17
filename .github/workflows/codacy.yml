@@ -1,6 +1,7 @@
 name: Codacy CI
 
 on:
+
   push:
     branches:
       - main
@@ -9,8 +10,11 @@ on:
       - main
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
+
     services:
       mysql:
         image: mysql:5.7
@@ -22,11 +26,12 @@ jobs:
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-strategy:
+
+    strategy:
       matrix:
         python-version: ['3.11', '3.12']
 
-steps:
+    steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
